@@ -1,25 +1,22 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 class object
 {
+	
 public:
-	enum ObjectType {
-		block = 0,
-		Thorn,
-		player,
-		itemp,
-		empty
-	};
+	int x, y;
 
-private:
-	ObjectType objectType;
+	object(int x, int y);
 
-	object(ObjectType objType);
-
-	virtual ~object() {};
+	virtual ~object();
 
 public:
-	ObjectType getObjectType();
+	virtual int getObjectX();
+	virtual int getObjectY();
+	virtual void update() =0;
+	virtual void draw() =0;
 };
 

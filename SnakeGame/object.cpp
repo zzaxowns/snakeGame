@@ -1,12 +1,22 @@
 #include "object.h"
 
 
-object::object(ObjectType objType) {
-	this->objectType = objType;
-	
+object::object(int x, int y) {
+	this->x = x;
+	this->y = y;
+	cout << "object 持失切" << endl;
 }
 
-object::ObjectType object::getObjectType(){
-	return this->objectType;
+object::~object() {
+	cout << "object 社瑚切" << endl;
 }
+
+int object::getObjectX() {
+	return x;
+}
+
+int object::getObjectY() {
+	return y;
+}
+
 
