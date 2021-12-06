@@ -1,6 +1,6 @@
 #include "map.h"
 
-map::map(int map_width, int map_Height) :object(x, y)
+map::map(unsigned short map_width, unsigned short map_Height) :object(x, y)
 {
 	width = map_width;
 	height = map_Height;

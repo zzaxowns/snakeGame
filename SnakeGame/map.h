@@ -3,10 +3,10 @@
 
 class map : public object{
 public: 
-	int width, height;
+	unsigned short width, height;
 
 public:
-	map(int map_width, int map_Height);
+	map(unsigned short map_width, unsigned short map_Height);
 	~map();
 
 	void update();
