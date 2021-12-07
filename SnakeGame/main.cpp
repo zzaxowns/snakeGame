@@ -5,7 +5,10 @@ using namespace std;
 
 int main(){
 	
-	object* map = new map(10, 10);
+	object* maps = new map(25,50,0,0);
 
+	maps->draw();
+
+	delete maps;
 	return 0;
 }
