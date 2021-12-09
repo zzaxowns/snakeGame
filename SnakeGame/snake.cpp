@@ -14,4 +14,5 @@ void snake::update()
 
 void snake::draw()
 {
+
 }

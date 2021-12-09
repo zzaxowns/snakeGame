@@ -1,6 +1,6 @@
 #pragma once
+#include <iostream>
 #include "object.h"
-
 class snake :public object{
 
 	enum direction {
