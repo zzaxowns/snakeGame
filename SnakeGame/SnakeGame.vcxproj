@@ -123,15 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="command.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="moveCommand.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="snake.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="command.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="moveCommand.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="snake.h" />
   </ItemGroup>
