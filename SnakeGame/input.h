@@ -10,7 +10,7 @@
 class input : public object
 {
 public:
-	input();
+	input(int x, int y);
 	~input();
 
 public:

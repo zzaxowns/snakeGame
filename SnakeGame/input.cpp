@@ -1,6 +1,6 @@
 #include "input.h"
 
-input::input():object(x,y) {
+input::input(int x, int y):object(x,y) {
 }
 
 input::~input() {
