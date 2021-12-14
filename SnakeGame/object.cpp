@@ -19,4 +19,12 @@ int object::getObjectY() {
 	return y;
 }
 
+void object::update()
+{
+}
+
+void object::draw()
+{
+}
+
 

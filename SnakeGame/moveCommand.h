@@ -4,7 +4,7 @@
 
 class moveCommand : public command{
 public:
-	moveCommand();
+	moveCommand(object* moveObj);
 	~moveCommand();
 
 	void excute();

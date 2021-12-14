@@ -1,6 +1,6 @@
 #include "moveCommand.h"
 
-moveCommand::moveCommand()
+moveCommand::moveCommand(object* moveObj)
 {
 }
 
