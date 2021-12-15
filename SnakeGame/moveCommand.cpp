@@ -2,6 +2,7 @@
 
 moveCommand::moveCommand(object* moveObj)
 {
+	m_moveObejct = moveObj;
 }
 
 moveCommand::~moveCommand()
@@ -10,4 +11,5 @@ moveCommand::~moveCommand()
 
 void moveCommand::excute()
 {
+
 }

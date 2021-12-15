@@ -1,2 +1,2 @@
 ﻿  main.cpp
-  SnakeGame.vcxproj -> C:\Users\KimTaejun\Desktop\snakeGame\x64\Debug\SnakeGame.exe
+c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(25): error C3861: 'input': 식별자를 찾을 수 없습니다.
