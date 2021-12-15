@@ -4,7 +4,6 @@
 //============================
 
 #include "object.h"
-#include "map.h"
 #include "snake.h"
 #include "moveCommand.h"
 
@@ -12,15 +11,18 @@
 #define DOWN 80
 #define LEFT 75
 #define RIGHT 77
+#define HEIGHT 25
+#define WIDTH 20
 
 using namespace std;
 
-command* move_Command[4];
+int map[HEIGHT][WIDTH];
 
+command* move_Command[4];
+object* player;
 int main(){
 	
-	object* maps = new map(25,50,0,0);
-	object* player = new snake(12, 25);
+	player = new snake(10, 10);
 
 	move_Command[0] = new moveCommand(player, 0, -1); //Up
 	move_Command[1] = new moveCommand(player, 0, 1);  //Down
@@ -31,14 +33,14 @@ int main(){
 	while (1) {
 
 		//초기화
+		init_map();
 
 		//업데이트
-	
-		input();
+		update();
 
 		//그리기
-		maps->draw();
-		player->draw();
+		draw();
+		
 		//지우기
 		Sleep(100);
 		system("cls"); //화면 지우기
@@ -46,11 +48,34 @@ int main(){
 	}
 
 
-	delete maps; 
+
 	delete player;
 	delete move_Command;
 
 	return 0;
+}
+
+void update() { 
+	input(); // 키 입력
+	map[player->x][player->y] = '0';
+}
+
+void init_map() { 
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			if (i == 0 || j == 0 || i == HEIGHT - 1 || j == WIDTH - 1)
+				map[i][j] = '#';
+		}
+	}
+}
+
+void draw() {
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			cout << map[i][j];
+		}
+		cout << endl;
+	}
 }
 
 void input() {
