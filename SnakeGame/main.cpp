@@ -15,11 +15,18 @@
 
 using namespace std;
 
+command* move_Command[4];
+
 int main(){
 	
 	object* maps = new map(25,50,0,0);
 	object* player = new snake(12, 25);
-	command* move_Command = new moveCommand(player);
+
+	move_Command[0] = new moveCommand(player, 0, -1); //Up
+	move_Command[1] = new moveCommand(player, 0, 1);  //Down
+	move_Command[2] = new moveCommand(player, -1, 0); //Left
+	move_Command[3] = new moveCommand(player, 0, 1);  //Right
+
 
 	while (1) {
 
@@ -41,6 +48,7 @@ int main(){
 
 	delete maps; 
 	delete player;
+	delete move_Command;
 
 	return 0;
 }
@@ -55,16 +63,16 @@ void input() {
 			key = _getch();  // 새로 입력값을 판별하여 상하좌우 출력
 			switch (key) {
 			case LEFT:
-				printf("왼쪽으로 이동\n");
+				move_Command[2]->excute();
 				break;
 			case RIGHT:
-				printf("오른쪽으로 이동\n");
+				move_Command[3]->excute();
 				break;
 			case UP:
-				printf("위로 이동\n");
+				move_Command[0]->excute();
 				break;
 			case DOWN:
-				printf("아래로 이동\n");
+				move_Command[1]->excute();
 				break;
 			}
 		}
