@@ -1,6 +1,8 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include <utility>
+#include <vector>
 //============================
 
 #define HEIGHT 20
@@ -10,7 +12,8 @@ using namespace std;
 
 int map[HEIGHT][WIDTH];
 bool gameOver;
-
+vector<pair<int, int>> tails;
+int tail_Number;
 int x, y, fruit_X, fruit_Y, score;
 
 enum Direction {
@@ -49,8 +52,18 @@ void Draw() {
 				cout << "O";
 			else if (i == fruit_Y && j == fruit_X)
 				cout << "F";
-			else
-				cout << " ";
+			else {
+				bool print = false;
+				for (auto pos : tails) {
+					if (i == pos.second && j == pos.first) {
+						cout << "o";
+						print = true;
+					}
+				}
+
+				if(!print)
+					cout << " ";
+			}
 		}
 		cout << endl;
 	}
@@ -60,6 +73,10 @@ void Draw() {
 	cout << endl;
 
 	cout << "SCORE: " << score << endl;
+
+	for (auto pos : tails) {
+		cout << "(" << pos.first << "," << pos.second << ")  ";
+	}
 }
 
 void Input() {
@@ -90,6 +107,16 @@ void Input() {
 }
 
 void Logic() {
+
+	pair<int, int> new_Tail = {x,y};
+	pair<int, int> front_Tail;
+
+	for (auto pos : tails) {
+		front_Tail = pos;
+		pos = new_Tail;
+		new_Tail = front_Tail;
+	}
+
 	switch (dir) {
 	case LEFT:
 		x--;
@@ -116,6 +143,7 @@ void Logic() {
 
 		fruit_X = rand() % WIDTH;
 		fruit_Y = rand() % HEIGHT;
+		tails.push_back({ x,y });
 	}
 }
 
