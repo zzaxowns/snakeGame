@@ -36,7 +36,7 @@ void Setup() {
 void Draw() {
 	system("cls");
 
-	for (int i = 0; i < WIDTH; i++)
+	for (int i = 0; i < WIDTH+1; i++)
 		cout << "#";
 	cout << endl;
 
@@ -44,8 +44,6 @@ void Draw() {
 		for (int j = 0; j < WIDTH; j++) {
 			if (j == 0 || j == WIDTH - 1)
 				cout << "#";
-			else
-				cout << " ";
 
 			if (i == y && j == x)
 				cout << "O";
@@ -57,10 +55,11 @@ void Draw() {
 		cout << endl;
 	}
 
-
-	for (int i = 0; i < WIDTH; i++)
+	for (int i = 0; i < WIDTH+1; i++)
 		cout << "#";
 	cout << endl;
+
+	cout << "SCORE: " << score << endl;
 }
 
 void Input() {
@@ -69,28 +68,55 @@ void Input() {
 	if (_kbhit()) {
 		key = _getch();
 
-		if (key == -32) {    // -32로 입력되면
-			key = _getch();  // 새로 입력값을 판별하여 상하좌우 출력
-			switch (key) {
-			case LEFT:
+		switch (key) {
+		case 'a':
+			dir = LEFT;
+			break;
+		case 'd':
+			dir = RIGHT;
+			break;
+		case 'w':
+			dir = UP;
+			break;
+		case 's':
+			dir = DOWN;
+			break;
 
-				break;
-			case RIGHT:
-
-				break;
-			case UP:
-
-				break;
-			case DOWN:
-
-				break;
-			}
+		case 'x':
+			gameOver = true;
+			break;
 		}
 	}
 }
 
 void Logic() {
+	switch (dir) {
+	case LEFT:
+		x--;
+		break;
+	case RIGHT:
+		x++;
+		break;
+	case UP:
+		y--;
+		break;
+	case DOWN:
+		y++;
+		break;
+	default:
+		break;
+	}
 
+	if (x< 0 || x>WIDTH || y<0 || y>HEIGHT) {
+		gameOver = true;
+	}
+
+	if (x == fruit_X && y == fruit_Y) {
+		score += 10;
+
+		fruit_X = rand() % WIDTH;
+		fruit_Y = rand() % HEIGHT;
+	}
 }
 
 int main(){
