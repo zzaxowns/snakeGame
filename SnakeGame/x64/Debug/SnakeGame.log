@@ -1,7 +1,2 @@
 ﻿  main.cpp
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(36): error C3861: 'init_map': 식별자를 찾을 수 없습니다.
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(39): error C3861: 'update': 식별자를 찾을 수 없습니다.
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(42): error C3861: 'draw': 식별자를 찾을 수 없습니다.
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(53): warning C4156: 'delete' 배열 형식을 사용하지 않고 배열 식을 삭제했습니다. 배열 형식이 대체됩니다.
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(53): warning C4154: 배열 식을 삭제했습니다. 포인터로 변환이 제공됩니다.
-c:\users\kimtaejun\desktop\snakegame\snakegame\main.cpp(59): error C3861: 'input': 식별자를 찾을 수 없습니다.
+  SnakeGame.vcxproj -> C:\Users\KimTaejun\Desktop\snakeGame\x64\Debug\SnakeGame.exe
