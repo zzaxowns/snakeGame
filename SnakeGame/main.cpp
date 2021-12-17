@@ -12,7 +12,7 @@ using namespace std;
 
 int map[HEIGHT][WIDTH];
 bool gameOver;
-vector<pair<int, int>> tails;
+int tailX[100], tailY[100];
 int tail_Number;
 int x, y, fruit_X, fruit_Y, score;
 
@@ -54,8 +54,8 @@ void Draw() {
 				cout << "F";
 			else {
 				bool print = false;
-				for (auto pos : tails) {
-					if (i == pos.second && j == pos.first) {
+				for (int k = 0; k < tail_Number; k++) {
+					if (i == tailY[k] && j == tailX[k]) {
 						cout << "o";
 						print = true;
 					}
@@ -74,9 +74,9 @@ void Draw() {
 
 	cout << "SCORE: " << score << endl;
 
-	for (auto pos : tails) {
+	/*for (auto pos : tails) {
 		cout << "(" << pos.first << "," << pos.second << ")  ";
-	}
+	}*/
 }
 
 void Input() {
@@ -108,15 +108,22 @@ void Input() {
 
 void Logic() {
 
-	pair<int, int> new_Tail = {x,y};
-	pair<int, int> front_Tail;
+	int prevX1, prevY1, prevX2, prevY2;
+	prevX1 = tailX[0];
+	prevY1 = tailY[0];
+	tailX[0] = x;
+	tailY[0] = y;
 
-	for (auto pos : tails) {
-		front_Tail = pos;
-		pos = new_Tail;
-		new_Tail = front_Tail;
+	for (int i = 1; i < tail_Number; i++) {
+		prevX2 = tailX[i];
+		prevY2 = tailY[i];
+		tailX[i] = prevX1;
+		tailY[i] = prevY1;
+		prevX1 = prevX2;
+		prevY1 = prevY2;
 	}
 
+ 
 	switch (dir) {
 	case LEFT:
 		x--;
@@ -138,12 +145,17 @@ void Logic() {
 		gameOver = true;
 	}
 
+	for (int i = 0; i < tail_Number; i++) {
+		if (x == tailX[i] && y == tailY[i])
+			gameOver = true;
+	}
+
 	if (x == fruit_X && y == fruit_Y) {
 		score += 10;
 
 		fruit_X = rand() % WIDTH;
 		fruit_Y = rand() % HEIGHT;
-		tails.push_back({ x,y });
+		tail_Number++;
 	}
 }
 
